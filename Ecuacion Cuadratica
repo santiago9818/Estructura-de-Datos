@@ -1,0 +1,39 @@
+# Estructura-de-Datos
+
+import java.util.Scanner;
+
+
+public class SerieDeTaylor 
+{
+    public static void main(String[] args) 
+    {
+     Scanner entrada=new Scanner(System.in);
+        System.out.println("ecuacion cuaratica ");
+        System.out.println("digite el valor de a ");
+        int a=entrada.nextInt();
+     System.out.println("digite el valor de b ");
+        int b=entrada.nextInt();
+        System.out.println("digite el valor de c ");
+        int c=entrada.nextInt();
+        
+        int d=(int) (Math.pow(b, 2)-4*a*c);
+        int e=2*a;
+        if(d==0)
+        {
+            System.out.println("x1 = x2 = " + -b/e);
+        }
+        else
+        {
+         if(d>0)
+         {
+             System.out.println("x1 = " + (-b + Math.sqrt(d)/ e));
+             System.out.println("x2 = " + (-b - Math.sqrt(d)/ e));
+         }  
+         else
+         {
+           System.out.println("x1 = " + -b/e + " + "  + Math.sqrt(-d)/e  );
+           System.out.println("x2 = " + -b/e + " + "  + Math.sqrt(-d)/e );
+         }
+        }    
+    }  
+}
