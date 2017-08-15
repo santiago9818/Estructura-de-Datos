@@ -1,5 +1,4 @@
 # Estructura-de-Datos
-
 public class Calculadora 
 {
     public Calculadora(){}
@@ -71,8 +70,30 @@ public int factorial(int x)
       return x * factorial(x-1);  
     }
 }  
-public double[]ecuacion_cuadratica(int a,int b,int c)
-{
-    return null;
-}
+ public double[]ecuacion_cuadratica(int a,int b,int c)
+ { 
+     double[]roots=new double [2];
+     int temp_term1,temp_term2;
+     if(a!=0)
+     {
+         temp_term1=this.potencia(b,2);
+         temp_term2=4*a*c;
+         if(temp_term1<temp_term2)
+         {
+             return null;
+         }
+         else
+         {
+            roots[0]=(b + Math.sqrt(temp_term1 - temp_term2))/(2*a); 
+            roots[1]=(b - Math.sqrt(temp_term1 - temp_term2))/(2*a); 
+            return roots;
+         }
+     }
+     else
+     {
+         return null;
+     }
+   
+ }
+
 }
