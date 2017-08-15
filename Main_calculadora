@@ -1,0 +1,115 @@
+# Estructura-de-Datos
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.text.DecimalFormat;
+
+
+public class main 
+{
+    BufferedWriter bw= new   BufferedWriter (new OutputStreamWriter(System.out));
+     BufferedReader br= new   BufferedReader (new InputStreamReader(System.in));
+ public static void main(String[] args) 
+ {
+        
+ }
+ public static int opciones() throws IOException 
+ {
+     bw.write("\n\nEscoja alguna de las siguiente opciones: \n1. suma\n2. Resta\n3. Multiplicar\n4. Divicion\n5. Modulo\n6. potencia\n7. factorial\n8. cuadratica\n9");
+     return Integer.parseInt(br.readLine());
+ }
+ public static void actions(int action, int[]parameters) throws IOException
+ {
+     Calculadora operations=new Calculadora();
+   switch(action) 
+   {
+       case 1:// suma
+       {
+         int result=operations.suma(parameters[0], parameters[1]);
+         bw.write("el resultado de la suma es " + result + "\n");
+       }
+       break;
+       case 2://resta
+       {
+         int result=operations.resta(parameters[0], parameters[1]);
+         bw.write("el resultado de la resta  es " + result + "\n");
+       }
+       break;
+       case 3://multiplicacion
+       {
+         int result=operations.multiplicacion(parameters[0], parameters[1]);
+         bw.write("el resultado de la multiplicacion es " + result + "\n");
+       }
+       break;
+       case 4://division
+       {
+         double result=operations.division(parameters[0], parameters[1]);
+          DecimalFormat df=new DecimalFormat("#0.00000");
+          if(result==Double.NaN)
+          {
+            bw.write("la division por cero no esta permitida\n");
+          }
+          else
+          {
+           bw.write("el resultado de la division es " + df.format(result) + "\n");    
+          }
+       }
+       break;
+       case 5://potencia
+       {
+         
+       }
+       break;
+       case 6:
+       {
+         int result=operations.potencia(parameters[0], parameters[1]);
+         bw.write("el resultado de la potencia es " + result + "\n");
+       }
+       break;
+       case 7:
+       {
+         int result=operations.factorial(parameters[0]);
+         bw.write("el resultado del factorial es " + result + "\n");
+       }
+       break;
+       case 8:
+       {
+         double []result=operations.ecuacion_cuadratica(parameters[0], parameters[1],parameters[2]);
+         bw.write("las raices obtenidas de la ecuacion son : x1= " + result[0] +" y x2 = " + result[1] +  "\n");
+       }
+       break;
+       default:
+       {
+           System.exit(1);
+       }
+   }
+ }
+ public static int[] getparameters(int actions)
+ {
+  int []parameters;
+  switch(action) 
+   {
+       case 1:// suma
+       {
+           parameters=new int[2];
+        
+         bw.write("el resultado de la suma es " + result + "\n");
+         parameters[0]=Integer.parseInt(br.readLine());
+         
+         bw.write("el resultado de la suma es " + result + "\n");
+         parameters[1]=Integer.parseInt(br.readLine());
+       }
+       break;
+       case 2://resta
+       {
+         int result=operations.resta(parameters[0], parameters[1]);
+         bw.write("el resultado de la resta  es " + result + "\n");
+         return parameters;
+       }
+       break;
+  }
+ }
+ 
+}
