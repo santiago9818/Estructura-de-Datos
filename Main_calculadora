@@ -7,21 +7,26 @@ import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
 
 
-public class main 
+public class Main 
 {
     BufferedWriter bw= new   BufferedWriter (new OutputStreamWriter(System.out));
      BufferedReader br= new   BufferedReader (new InputStreamReader(System.in));
  public static void main(String[] args) 
  {
-        
- }
- public static int opciones() throws IOException 
+       
+    public static int opciones() throws IOException 
  {
+     BufferedWriter bw= new   BufferedWriter (new OutputStreamWriter(System.out));
+     BufferedReader br= new   BufferedReader (new InputStreamReader(System.in));
+     
      bw.write("\n\nEscoja alguna de las siguiente opciones: \n1. suma\n2. Resta\n3. Multiplicar\n4. Divicion\n5. Modulo\n6. potencia\n7. factorial\n8. cuadratica\n9");
      return Integer.parseInt(br.readLine());
  }
  public static void actions(int action, int[]parameters) throws IOException
  {
+     BufferedWriter bw= new   BufferedWriter (new OutputStreamWriter(System.out));
+     BufferedReader br= new   BufferedReader (new InputStreamReader(System.in));
+     
      Calculadora operations=new Calculadora();
    switch(action) 
    {
@@ -57,24 +62,24 @@ public class main
           }
        }
        break;
-       case 5://potencia
+       case 5:
        {
          
        }
        break;
-       case 6:
+       case 6://potencia 
        {
          int result=operations.potencia(parameters[0], parameters[1]);
          bw.write("el resultado de la potencia es " + result + "\n");
        }
        break;
-       case 7:
+       case 7://factorial
        {
          int result=operations.factorial(parameters[0]);
          bw.write("el resultado del factorial es " + result + "\n");
        }
        break;
-       case 8:
+       case 8://ecuacion
        {
          double []result=operations.ecuacion_cuadratica(parameters[0], parameters[1],parameters[2]);
          bw.write("las raices obtenidas de la ecuacion son : x1= " + result[0] +" y x2 = " + result[1] +  "\n");
@@ -86,15 +91,18 @@ public class main
        }
    }
  }
- public static int[] getparameters(int actions)
+ public static int[] getparameters(int actions) throws IOException
  {
+     BufferedWriter bw= new   BufferedWriter (new OutputStreamWriter(System.out));
+     BufferedReader br= new   BufferedReader (new InputStreamReader(System.in));
+     Calculadora operations=new Calculadora();
   int []parameters;
-  switch(action) 
+  switch(actions) 
    {
-       case 1:// suma
+      case 1:// suma
        {
-           parameters=new int[2];
-        
+         parameters=new int[2];
+       int result=operations.suma(parameters[0], parameters[1]);    
          bw.write("el resultado de la suma es " + result + "\n");
          parameters[0]=Integer.parseInt(br.readLine());
          
@@ -104,12 +112,90 @@ public class main
        break;
        case 2://resta
        {
-         int result=operations.resta(parameters[0], parameters[1]);
-         bw.write("el resultado de la resta  es " + result + "\n");
-         return parameters;
+         parameters=new int[2];
+       int result=operations.resta(parameters[0], parameters[1]);    
+         bw.write("el resultado de la resta es " + result + "\n");
+         parameters[0]=Integer.parseInt(br.readLine());
+         
+         bw.write("el resultado de la resta es " + result + "\n");
+         parameters[1]=Integer.parseInt(br.readLine());
        }
        break;
-  }
+       case 3://multiplicacion
+       {
+         parameters=new int[2];
+       int result=operations.multiplicacion(parameters[0], parameters[1]);    
+         bw.write("el resultado de la multiplicacion es " + result + "\n");
+         parameters[0]=Integer.parseInt(br.readLine());
+         
+         bw.write("el resultado de la multiplicacion es " + result + "\n");
+         parameters[1]=Integer.parseInt(br.readLine());
+       }
+       break;
+       case 4://division
+       {
+           parameters=new int [2];
+         double result=operations.division(parameters[0], parameters[1]);
+          DecimalFormat df=new DecimalFormat("#0.00000");
+          if(result==Double.NaN)
+          {
+            bw.write("la division por cero no esta permitida\n");
+             parameters[0]=Integer.parseInt(br.readLine());
+          }
+          else
+          {
+           bw.write("el resultado de la division es " + df.format(result) + "\n");
+            parameters[1]=Integer.parseInt(br.readLine());
+          }
+       }
+       break;
+       case 5:
+       {
+         
+       }
+       break;
+       case 6://potencia
+       {
+        parameters=new int[2];
+       int result=operations.potencia(parameters[0], parameters[1]);    
+         bw.write("el resultado de la potencia es " + result + "\n");
+         parameters[0]=Integer.parseInt(br.readLine());
+         
+         bw.write("el resultado de la potencia es " + result + "\n");
+         parameters[1]=Integer.parseInt(br.readLine());
+       }
+       break;
+       case 7://factorial
+       {
+         
+         parameters=new int[2];
+        int result=operations.factorial(parameters[0]);
+         bw.write("el resultado del factrial es " + result + "\n");
+         parameters[0]=Integer.parseInt(br.readLine());
+       }
+       break;
+       case 8://ecuacion
+       {
+           parameters=new int[2];
+         double []result=operations.ecuacion_cuadratica(parameters[0], parameters[1],parameters[2]);
+         bw.write("las raices obtenidas de la ecuacion son : x1= " + result[0] +" y x2 = " + result[1] +  "\n");
+         parameters[0]=Integer.parseInt(br.readLine());
+         
+         bw.write("las raices obtenidas de la ecuacion son : x1= " + result[0] +" y x2 = " + result[1] +  "\n");
+         parameters[1]=Integer.parseInt(br.readLine());
+         
+         bw.write("las raices obtenidas de la ecuacion son : x1= " + result[0] +" y x2 = " + result[1] +  "\n");
+         parameters[2]=Integer.parseInt(br.readLine());
+       }
+       break;
+       default:
+       {
+           System.exit(1);
+       }
+       
+   }
+        return null;
+        
  }
- 
+}
 }
