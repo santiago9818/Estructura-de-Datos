@@ -16,7 +16,7 @@ public class SuperEnteros {
         
         int[]num1 = se.convertToIntArray(number1);
         int[]num2 = se.convertToIntArray(number2);
-        int[]result = se.resta(num1 , num2);
+        int[]result = se.multiplicacion(num1 , num2);
         for(int i= 1; i< result.length; i++)
         {
             System.out.print(result [result.length - i] +"");   
@@ -119,10 +119,37 @@ public class SuperEnteros {
     
     public int [] multiplicacion(int[] number1, int [] number2)
     {
-        int [] result = new int [number1.length + number2.length];
+        int [] result = new int [max(number1.length, number2.length) + 1];
+        int i, aux;
+        
+        for(i =0; i< min(number1.length, number2.length);i++);
+        {
+            aux= (number1[i] * number2[i]) ;
+            result[i] = (number1[i] * number2[i]) ;
+            result[i + 1] = aux;
+        }
+       if(number1.length>number2.length)
+        {
+         for(int j=i;j<number1.length;j++)
+         {
+             result[j]*= number1[j];
+         }   
+            
+        }
+        else
+        {
+          if(number2.length>number1.length)
+          {
+           for(int j=i;j<number2.length;j++)
+           {
+             result[j]*= number2[j];
+           }   
+          }
+        }
         return result;
     }
             
     
 }
+
 // fibonacci y factorial
