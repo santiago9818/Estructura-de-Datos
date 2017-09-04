@@ -148,8 +148,46 @@ public class SuperEnteros {
         }
         return result;
     }
+    public int [] fibonacci(int[] number1)
+    {
+        int [] result = new int [number1.length];
+        int i, a=1,b=0;
+        
+        for(i =0; i<=number1.length;i++);
+        {
+            if(number1.length<0)
+            {
+                System.out.println("no existe la serie de fibonacci");  
+            }
+            else
+            {
+             result[i]= a + b ;
+              b=a;
+              a=result[i];
+            }
             
+        }
+       return result; 
+    }
+    public int factorial(int[] number1)
+    {
+        int i, factorial=1;
+     int [] result = new int [number1.length];
+     if(number1.length<1)
+     {
+      return 1; 
+     }
+     else
+     {
+      for(i=1;i<=number1.length;i++)
+      {
+       result[i]=factorial;
+          result[i]=result[i]*i;  
+          
+      }
+       return result[i];
+     }
+    }
+   
     
 }
-
-// fibonacci y factorial
