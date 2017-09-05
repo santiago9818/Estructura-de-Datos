@@ -1,0 +1,61 @@
+# Estructura-de-Datos
+
+import java.util.Vector;
+public class Test 
+{
+ public static void main(String[] args)
+ {
+  
+  Vector <Student>lista=new Vector <Student>();  
+  lista.add(new Student("Diego","is",123456,0.5));
+  lista.add(new Student());
+  lista.add(new Student("franklin","is",654321,1.0));
+  lista.add(new Student("Andres","is",987654,2.5));
+     System.out.println(lista.size());
+     for(int i=0;i<lista.size();i++)
+     
+         System.out.println(lista.get(i).toString());
+     lista.get(1).promedio=0.5;
+     System.out.println();
+       for(int i=0;i<lista.size();i++)
+           System.out.println(lista.get(i).toString());
+       Student head=new Student ("Diego","is",123455,0.5);
+        Student nodo=new Student ("Franklin","is",654321,1.0);
+         Student nodo2=new Student ("Andres","is",654321,1.0);
+         nodo.siguiente=nodo2;
+         head.siguiente=nodo;
+     
+ }
+    
+}
+
+
+
+
+
+public class Student 
+{
+    public String nombre;
+    public String carrera;
+    public int codigo;
+    public double promedio;
+    public Student siguiente;
+    
+    public Student(){}
+    public Student(String nombre,String carrera,int codigo, double promedio)
+    {
+        this.nombre=nombre;
+        this.carrera=carrera;
+        this.codigo=codigo;
+        this.promedio=promedio;
+        
+    }
+    public String toString()
+    {
+        return "nombre: " + this.nombre + "\tcarrera: " + this.carrera  + "\codigo: " + this.codigo + "\tpromedio:  " + "\n";
+        
+               
+    }
+    
+    
+}
