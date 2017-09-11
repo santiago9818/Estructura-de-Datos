@@ -1,0 +1,144 @@
+# Estructura-de-Datos
+
+public class jugador
+{
+  private String nombre;
+   private int edad;
+    private String equipo;
+   private String Deporte;
+    public jugador siguiente;
+    public jugador(){}
+    public jugador(String nombre,int edad,String equipo,String Deporte)
+    {
+        this.nombre=nombre;
+        this.edad=edad;
+        this.equipo=equipo;
+        this.Deporte=Deporte;
+    }
+
+
+    public String getNombre() 
+    {
+        return nombre;
+    }
+
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() 
+    {
+        return edad;
+    }
+
+    public void setEdad(int edad) 
+    {
+        this.edad = edad;
+    }
+
+    public String getEquipo()
+    {
+        return equipo;
+    }
+
+    public void setEquipo(String equipo) 
+    {
+        this.equipo = equipo;
+    }
+
+    public String getDeporte()
+    {
+        return Deporte;
+    }
+
+    public void setDeporte(String Deporte) 
+    {
+        this.Deporte = Deporte;
+    }
+
+    public jugador getSiguiente() 
+    {
+        return siguiente;
+    }
+
+    public void setSiguiente(jugador siguiente)
+    {
+        this.siguiente = siguiente;
+    }
+    
+    public String toString()
+    {
+        return "el jugador: " + this.nombre + "\ttiene " + this.edad  + "\taños y pertence al equipo " + this.equipo + "\ten el Deporte:  "  + this.Deporte+ "\n";
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+public class lista 
+{
+  static jugador head=new jugador();
+     
+    public static void main(String[] args)
+    {
+      jugador add1= new jugador("roger",36,"Federer","tenis");
+      jugador add2= new jugador("tiger",34,"Fedex","golf");
+      jugador add3=new jugador("ronaldinho",35,"barcelona","futbol");
+      jugador add4=new jugador("montoya",42,"penske","Indycar");
+      jugador add5=new jugador("marino",46,"Dolphins","football");
+      
+          add1.siguiente=add2;
+          add2.siguiente=add3;
+          add3.siguiente=add4;
+          add4.siguiente=add5;
+          head.siguiente=add1;
+          addNodeAtBeginning(new jugador("ibarguen",28,"colobia","salto triple"));
+         printlist(); 
+         addNodeAtEnd(new jugador("phelps",28,"euu","natacion"));
+     
+    }
+    public static void printlist() throws IOException
+    {
+      jugador temp = head.siguiente;
+     BufferedWriter bw=new BufferedWriter (new OutputStreamWriter(System.out));
+     try
+     {
+         while(temp!=null)
+         {
+             bw.write(temp.toString());
+             temp=temp.siguiente;
+         }
+         bw.flush();
+         catch(Exception ex)
+          {
+          }
+     }
+     public static void addNodeAtBeginning(jugador node)
+             
+     {
+         node.siguiente=head.siguiente;
+         head.siguiente=node;
+     }
+     public static void addNodeAtEnd(jugador node)
+     {
+       jugador temp=head.siguiente;
+       while(temp.siguiente!=null)
+       {
+           temp=temp.siguiente;
+           temp.siguiente=node;
+           
+       }
+     }
+    
+  
+}
