@@ -77,19 +77,15 @@ public class jugador
 
 
 
-
-
-
-
-
-
-
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class lista 
 {
   static jugador head=new jugador();
      
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
       jugador add1= new jugador("roger",36,"Federer","tenis");
       jugador add2= new jugador("tiger",34,"Fedex","golf");
@@ -102,28 +98,34 @@ public class lista
           add3.siguiente=add4;
           add4.siguiente=add5;
           head.siguiente=add1;
-          addNodeAtBeginning(new jugador("ibarguen",28,"colobia","salto triple"));
+           printlist(); 
+          addNodeAtBeginning(new jugador("ibarguen",28,"colombia","salto triple"));
+           printlist(); 
+           addNodeAtEnd(new jugador("phelps",28,"euu","natacion"));
          printlist(); 
-         addNodeAtEnd(new jugador("phelps",28,"euu","natacion"));
+       
      
     }
-    public static void printlist() throws IOException
+    public static void printlist() throws IOException 
     {
       jugador temp = head.siguiente;
      BufferedWriter bw=new BufferedWriter (new OutputStreamWriter(System.out));
-     try
-     {
+      try
+      {
          while(temp!=null)
          {
              bw.write(temp.toString());
              temp=temp.siguiente;
          }
+         bw.write("\n\n");
          bw.flush();
+      }
          catch(Exception ex)
           {
           }
-     }
-     public static void addNodeAtBeginning(jugador node)
+     
+    }
+     public static void addNodeAtBeginning(jugador node)// incersion inicial
              
      {
          node.siguiente=head.siguiente;
@@ -133,12 +135,88 @@ public class lista
      {
        jugador temp=head.siguiente;
        while(temp.siguiente!=null)
-       {
+       
            temp=temp.siguiente;
            temp.siguiente=node;
            
+       
+     }
+     
+     public static int getSize()// insercion final
+     {
+       int counter = 0;
+       jugador temp=head.siguiente;
+       while(temp!=null)
+       {
+       counter +=1;
+       temp=temp.siguiente;
+       }
+       return counter;
+     }
+     public void addAtIndex(jugador nodo, int i)
+     {
+       jugador temp=head;
+       int tamaño =getSize();
+       if(i>tamaño)
+       {
+           System.out.println("Error");
+       }
+       else
+       {
+         for(int j=0;j<i;j++)
+         {
+             temp=temp.siguiente;
+         }
+         nodo.siguiente=temp.siguiente;
+         temp.siguiente=nodo;
        }
      }
-    
+     // eliminar al inicio 
+     public void addAtelimi()
+     {
+      head.siguiente=head.siguiente.siguiente;   
+     }
+    // eliminar al final 
+     public void DeleteAtEnd()
+     {
+         jugador temp=head;
+         while(temp.siguiente.siguiente!=null)
+         {
+             temp=temp.siguiente;
+         }
+         temp.siguiente=null;
+     }
+     // eliminar en cualquier posicion
+     
+     public void elimnarIntermedio(int i)
+     {
+       jugador temp=head;
+       int tamaño =getSize();
+       if(i>tamaño)
+       {
+           System.out.println("Error");
+       }
+       else
+       {
+         for(int j=0;j<i;j++)
+         {
+             temp=temp.siguiente;
+         }
+         temp.siguiente=temp.siguiente.siguiente;
+        
+       }
+     }
   
-}
+ }
+
+
+
+
+
+
+
+
+
+
+
+
