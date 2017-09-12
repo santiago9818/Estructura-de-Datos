@@ -206,6 +206,29 @@ public class lista
         
        }
      }
+     
+      public jugador searchIndex(int i)
+     {
+         jugador temp=head.siguiente;
+         for(int j=0;j<i;j++)
+         {
+             temp=temp.siguiente;
+         }
+         return temp;
+     }
+     public jugador searchSport(String deporte)
+     {
+        jugador temp=head.siguiente;
+        jugador head2;
+        while(temp!=null)
+        {
+            if(temp.getDeporte().equals(deporte))
+            {
+             head2.addAtEnd(temp);   
+            }
+        }
+        return head2;
+     }
   
  }
 
